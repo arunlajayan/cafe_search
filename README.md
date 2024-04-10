@@ -1,8 +1,18 @@
-# React + Vite
+ using Technique :
+    React
+    papaerparse
+    react-icons 
+    tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ Build in Tool : Vite 
+     development: npm run start
+    localhost:5173 - for select country/city
+    http://localhost:5173/catagories/{place}/{code}: for select cafe each place
+    http://localhost:5173/cafe - for view cafe status
 
-Currently, two official plugins are available:
+    build: npm run preview
+    http://localhost:4173/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+    Deployed in 
+    https://6616c695c0bcf319c475562b--peaceful-brigadeiros-027593.netlify.app/

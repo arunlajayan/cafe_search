@@ -25,7 +25,7 @@ function City() {
       
         const value = e?.CountryCode
       console.log(value)
-      navigate(`/new-page/${value}`);
+      navigate(`/catagories/${value}`);
   }
   return (
     <div className="mt-20">

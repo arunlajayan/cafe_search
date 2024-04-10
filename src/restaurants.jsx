@@ -26,9 +26,9 @@ export default function Restaurants() {
           .filter(restaurant => (!hasOnlineDelivery || restaurant.HasOnlineDelivery === 'Yes'))
           .filter(restaurant => (!cuisineFilter || restaurant.Cuisines.includes(cuisineFilter)))
           .sort((a, b) => parseFloat(b.AggregateRating) - parseFloat(a.AggregateRating));
-        console.log(filteredData)
+       
         setData(filteredData);
-        console.log(filteredData); // Log filtered data
+        console.log(filteredData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,7 +38,7 @@ export default function Restaurants() {
   }, [countryCode,hasTableBooking,hasOnlineDelivery,cuisineFilter]);
 
   const handleClick = (e) => {
-    console.log(e)
+    
     navigate("/cafe", {
       state: {
         countryCode: e
@@ -47,21 +47,33 @@ export default function Restaurants() {
   };
   return (
     <div>
-      <h1>Restaurants  Code: {place}</h1>
-      <div className="flex mb-4">
-        <label className="mr-2">
-          <input type="checkbox" checked={hasTableBooking} onChange={() => setHasTableBooking(!hasTableBooking)} />
-          <span className="ml-1">Has Table Booking</span>
-        </label>
-        <label className="mr-2">
-          <input type="checkbox" checked={hasOnlineDelivery} onChange={() => setHasOnlineDelivery(!hasOnlineDelivery)} />
-          <span className="ml-1">Has Online Delivery</span>
-        </label>
-        <label>
+      
+   
+      <h3 className="mb-4 font-semibold text-gray-900 dark:text-black">Filter</h3>
+      <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <div className="flex items-center ps-3">
+        <input type="checkbox" checked={hasOnlineDelivery} onChange={() => setHasOnlineDelivery(!hasOnlineDelivery)}  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+            <label for="vue-checkbox-list" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Has Online Delivery</label>
+        </div>
+        </li>
+        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+          <input type="checkbox"  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" checked={hasTableBooking} onChange={() => setHasTableBooking(!hasTableBooking)} />
+           <label for="vue-checkbox-list" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Has Table Booking</label>
+          </div>
+        </li>
+        <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+          <div className="flex items-center ps-3">
+          <label>
           <span className="mr-2">Cuisine:</span>
-          <input type="text" value={cuisineFilter} onChange={e => setCuisineFilter(e.target.value)} className="border border-gray-300 px-2 py-1 rounded-md" />
+          <input type="text" value={cuisineFilter} onChange={e => setCuisineFilter(e.target.value)} className="border border-gray-300 px-2 text-black py-1 rounded-md" />
         </label>
-      </div>
+          </div>
+          </li>
+      </ul>
+      
+     
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-6">
         {data?.map((restaurant) => (
           <div key={restaurant.RestaurantID} className="border p-4">

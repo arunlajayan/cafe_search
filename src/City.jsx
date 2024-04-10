@@ -6,7 +6,25 @@ function City() {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [city, setCity] = useState(null);
+  const [isCountrySearchVisible, setIsCountrySearchVisible] = useState(true);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const countrySearchElement = document.getElementById('country-search');
+  //     const citySearchElement = document.getElementById('city-search');
+  //     console.log(countrySearchElement,citySearchElement)
+  //     if (countrySearchElement && citySearchElement) {
+  //       const countrySearchBottom = countrySearchElement.getBoundingClientRect().bottom;
+  //       const citySearchTop = citySearchElement.getBoundingClientRect().top;
+  //       setIsCountrySearchVisible(countrySearchBottom >= countrySearchBottom);
+        
+  //     }
+  //   };
 
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
   useEffect(() => {
 
     const fetchData = async () => {
@@ -37,17 +55,21 @@ function City() {
     let value;
     if (e.CountryCode) {
        value = e?.CountryCode
-    console.log(value)
+   
     navigate(`/catagories/country/${value}`);
     } else if (e.CityCode) {
       value = e.CityCode
-      console.log(value)
+     
       navigate(`/catagories/city/${value}`);
     }
     
   }
   return (
+
+    
     <div className="mt-20 ">
+       <div id="country-search" >
+        <h1 className="text-center text-4xl my-6 fixed top-0 left-0 w-full bg-white shadow-lg p-4">Country Search </h1>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-6">
         {data?.map((e, index) => (
           <div key={index} className="border p-4">
@@ -56,7 +78,9 @@ function City() {
             </button>
           </div>
         ))}
+        </div>
       </div>
+      <div id="country-search">
       <h1 className="text-center text-4xl my-6">City Search </h1>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-6">
         {city?.map((e, index) => (
@@ -65,8 +89,10 @@ function City() {
               <h3>{e.City}</h3>
             </button>
           </div>
+
         ))}
-      </div>
+        </div>
+        </div>
     </div>
 
   )

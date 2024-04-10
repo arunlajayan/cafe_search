@@ -9,7 +9,7 @@ function App() {
     <Router>
     <Routes>
       <Route path="/" element={<City />} />
-        <Route path="/catagories/:countryCode" element={<Restaurants />} />
+        <Route path="/catagories/:place/:countryCode" element={<Restaurants />} />
         <Route path="/cafe" element={<Cafe />} />
     </Routes>
   </Router>
